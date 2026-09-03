@@ -10,9 +10,9 @@ type Props = {
 const VIEW_W = 1000;
 const VIEW_H = 470;
 const PAD_L = 78;
-const PAD_R = 40;
+const PAD_R = 62;
 const PAD_B = 62;
-const PAD_T = 40;
+const PAD_T = 96;
 
 const toggles = ["3D View", "2D View", "Vector", "Trajectory", "Grid"] as const;
 
@@ -149,10 +149,10 @@ export function SimulationCanvas({ velocity, angle, gravity }: Props) {
         />
 
         <g className="fill-muted-foreground text-[13px]" fontFamily="var(--font-sans)">
-          <text x={PAD_L - 8} y={PAD_T - 20} textAnchor="middle" className="fill-foreground">
+          <text x={PAD_L + 16} y={PAD_T - 26} textAnchor="start" className="fill-foreground">
             y (m)
           </text>
-          <text x={VIEW_W - PAD_R + 4} y={VIEW_H - PAD_B + 22} className="fill-foreground">
+          <text x={VIEW_W - PAD_R + 14} y={VIEW_H - PAD_B + 26} className="fill-foreground">
             x (m)
           </text>
           {xTicks.map((t) => (
