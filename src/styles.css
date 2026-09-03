@@ -77,20 +77,20 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.9884 0.0013 286.38);
+  --foreground: oklch(0.2112 0.0181 274.98);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.2112 0.0181 274.98);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.545 0.208 286.5);
+  --popover-foreground: oklch(0.2112 0.0181 274.98);
+  --primary: oklch(0.5785 0.2108 282.21);
   --primary-foreground: oklch(0.99 0.005 285);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.9702 0.0041 271.37);
+  --secondary-foreground: oklch(0.2112 0.0181 274.98);
+  --muted: oklch(0.9702 0.0041 271.37);
+  --muted-foreground: oklch(0.4905 0.0263 271.69);
+  --accent: oklch(0.9702 0.0041 271.37);
+  --accent-foreground: oklch(0.2112 0.0181 274.98);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.929 0.013 255.508);
@@ -109,16 +109,17 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --panel: oklch(0.985 0.003 264);
-  --panel-foreground: oklch(0.129 0.042 264.695);
-  --canvas: oklch(0.965 0.012 240);
-  --canvas-line: oklch(0.86 0.02 260);
-  --stat-green: oklch(0.63 0.15 158);
-  --stat-purple: oklch(0.545 0.208 286.5);
-  --stat-blue: oklch(0.58 0.17 253);
-  --stat-orange: oklch(0.66 0.19 42);
-  --insight: oklch(0.968 0.017 288);
-  --insight-foreground: oklch(0.34 0.11 287);
+  --panel: oklch(0.9702 0.0041 271.37);
+  --panel-foreground: oklch(0.2112 0.0181 274.98);
+  --canvas: oklch(0.9576 0.0087 264.52);
+  --canvas-line: oklch(0.855 0.018 264);
+  /* semantic quantity hues: time, vertical/y, horizontal/x, velocity (warm) */
+  --stat-green: oklch(0.6538 0.1324 163.86);
+  --stat-purple: oklch(0.6054 0.0947 218.77);
+  --stat-blue: oklch(0.5602 0.1655 262.03);
+  --stat-orange: oklch(0.6808 0.1599 50.32);
+  --insight: oklch(0.9724 0.0186 282);
+  --insight-foreground: oklch(0.38 0.13 282);
 }
 
 .dark {
