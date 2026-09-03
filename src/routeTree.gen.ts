@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ClassroomRouteImport } from './routes/classroom'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as MyLearningRouteImport } from './routes/my-learning'
+import { Route as ResourcesRouteImport } from './routes/resources'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const MyLearningRoute = MyLearningRouteImport.update({
   path: '/my-learning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,15 @@ export interface FileRoutesById {
   '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/classroom' | '/explore' | '/my-learning'
+  fullPaths: '/' | '/classroom' | '/explore' | '/my-learning' | '/resources'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/classroom' | '/explore' | '/my-learning'
-  id: '__root__' | '/' | '/classroom' | '/explore' | '/my-learning'
+  to: '/' | '/classroom' | '/explore' | '/my-learning' | '/resources'
+  id:
+    '__root__' | '/' | '/classroom' | '/explore' | '/my-learning' | '/resources'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +77,7 @@ export interface RootRouteChildren {
   ClassroomRoute: typeof ClassroomRoute
   ExploreRoute: typeof ExploreRoute
   MyLearningRoute: typeof MyLearningRoute
+  ResourcesRoute: typeof ResourcesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyLearningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +125,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClassroomRoute: ClassroomRoute,
   ExploreRoute: ExploreRoute,
   MyLearningRoute: MyLearningRoute,
+  ResourcesRoute: ResourcesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
