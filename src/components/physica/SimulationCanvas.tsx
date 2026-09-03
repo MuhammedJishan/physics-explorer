@@ -51,7 +51,7 @@ export function SimulationCanvas({ velocity, angle, gravity }: Props) {
   const liveHeight = vy * midTime - 0.5 * gravity * midTime * midTime;
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-canvas">
+    <div className="relative overflow-hidden rounded-2xl border-2 border-border bg-canvas shadow-float">
       {/* floating toggle group */}
       <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2">
         {toggles.map((label) => {
@@ -75,11 +75,11 @@ export function SimulationCanvas({ velocity, angle, gravity }: Props) {
       </div>
 
       {/* floating live stats */}
-      <div className="absolute right-4 top-4 z-10 w-52 rounded-xl border border-border bg-card/95 p-3 shadow-float backdrop-blur">
-        <dl className="divide-y divide-border text-xs">
-          <Row label="Time" value={`${midTime.toFixed(2)} s`} className="text-stat-purple" />
+      <div className="absolute right-4 top-4 z-10 w-60 rounded-xl border border-border bg-card/95 p-4 shadow-float backdrop-blur">
+        <dl className="divide-y divide-border">
+          <Row label="Time" value={`${midTime.toFixed(2)} s`} className="text-stat-green" />
           <Row label="Height" value={`${liveHeight.toFixed(2)} m`} className="text-stat-purple" />
-          <Row label="Range" value={`${range.toFixed(2)} m`} className="text-stat-purple" />
+          <Row label="Range" value={`${range.toFixed(2)} m`} className="text-stat-blue" />
           <Row
             label="Velocity"
             value={`${velocity.toFixed(2)} m/s`}
@@ -170,25 +170,19 @@ export function SimulationCanvas({ velocity, angle, gravity }: Props) {
           </text>
         </g>
 
-        {/* trajectory */}
+        {/* trajectory — the boldest element on the page */}
         <path
           d={path}
           fill="none"
           stroke="var(--primary)"
-          strokeWidth="1.5"
-          strokeDasharray="5 7"
-          opacity="0.5"
+          strokeWidth="9"
+          strokeLinecap="round"
+          strokeDasharray="0.1 16"
+          opacity="0.85"
         />
-        {points.map((p, i) => (
-          <circle
-            key={i}
-            cx={px(p.x)}
-            cy={py(p.y)}
-            r={i % 2 === 0 ? 4.5 : 3}
-            fill="var(--primary)"
-            opacity={0.35 + 0.65 * (1 - i / points.length)}
-          />
-        ))}
+        <circle r="11" fill="var(--primary)" stroke="var(--card)" strokeWidth="3">
+          <animateMotion key={path} dur={`${Math.max(1.2, flight).toFixed(2)}s`} repeatCount="indefinite" path={path} />
+        </circle>
 
         {/* Hmax indicator */}
         <line
@@ -235,9 +229,11 @@ function Row({
   className?: string;
 }) {
   return (
-    <div className="flex items-center justify-between py-2">
-      <dt className="text-muted-foreground">{label}</dt>
-      <dd className={"font-medium tabular-nums " + (className ?? "")}>{value}</dd>
+    <div className="flex items-baseline justify-between gap-3 py-2">
+      <dt className="text-xs text-muted-foreground">{label}</dt>
+      <dd className={"text-base font-semibold tabular-nums tracking-tight " + (className ?? "")}>
+        {value}
+      </dd>
     </div>
   );
 }
