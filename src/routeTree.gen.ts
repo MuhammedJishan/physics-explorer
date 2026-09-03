@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClassroomRouteImport } from './routes/classroom'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as MyLearningRouteImport } from './routes/my-learning'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassroomRoute = ClassroomRouteImport.update({
+  id: '/classroom',
+  path: '/classroom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExploreRoute = ExploreRouteImport.update({
@@ -31,30 +37,34 @@ const MyLearningRoute = MyLearningRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/classroom': typeof ClassroomRoute
   '/explore': typeof ExploreRoute
   '/my-learning': typeof MyLearningRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/explore' | '/my-learning'
+  fullPaths: '/' | '/classroom' | '/explore' | '/my-learning'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/explore' | '/my-learning'
-  id: '__root__' | '/' | '/explore' | '/my-learning'
+  to: '/' | '/classroom' | '/explore' | '/my-learning'
+  id: '__root__' | '/' | '/classroom' | '/explore' | '/my-learning'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClassroomRoute: typeof ClassroomRoute
   ExploreRoute: typeof ExploreRoute
   MyLearningRoute: typeof MyLearningRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classroom': {
+      id: '/classroom'
+      path: '/classroom'
+      fullPath: '/classroom'
+      preLoaderRoute: typeof ClassroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/explore': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClassroomRoute: ClassroomRoute,
   ExploreRoute: ExploreRoute,
   MyLearningRoute: MyLearningRoute,
 }
