@@ -11,14 +11,15 @@ import {
   Maximize2,
   Box,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
-const navItems = [
-  { label: "Home", icon: Home, active: true },
-  { label: "Explore Concepts", icon: Compass },
-  { label: "My Learning", icon: GraduationCap },
-  { label: "Classroom", icon: Presentation },
-  { label: "Resources", icon: FileText },
-];
+export const navItems = [
+  { label: "Home", icon: Home, to: "/" },
+  { label: "Explore Concepts", icon: Compass, to: "/explore" },
+  { label: "My Learning", icon: GraduationCap, to: "/my-learning" },
+  { label: "Classroom", icon: Presentation, to: "/classroom" },
+  { label: "Resources", icon: FileText, to: "/resources" },
+] as const;
 
 export function Header() {
   return (
