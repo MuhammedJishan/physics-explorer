@@ -18,7 +18,7 @@ export function ExplanationCard() {
       </p>
       <ul className="mt-4 space-y-2.5 text-sm">
         <li className="flex items-start gap-2.5">
-          <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-stat-green" />
+          <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-stat-blue" />
           <span>
             <strong className="font-semibold">Horizontal motion:</strong>{" "}
             <Math>
@@ -27,7 +27,7 @@ export function ExplanationCard() {
           </span>
         </li>
         <li className="flex items-start gap-2.5">
-          <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-stat-blue" />
+          <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-stat-purple" />
           <span>
             <strong className="font-semibold">Vertical motion:</strong>{" "}
             <Math>
