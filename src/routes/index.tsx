@@ -140,9 +140,11 @@ function Index() {
 
 function Result({ label, value, tone }: { label: string; value: string; tone: string }) {
   return (
-    <div className="px-4 py-4 text-center">
+    <div className="px-4 py-5 text-center">
       <p className="text-xs text-muted-foreground">{label}</p>
-      <p className={"mt-1 text-2xl font-semibold tabular-nums " + tone}>{value}</p>
+      <p className={"mt-1.5 text-[1.9rem] font-semibold leading-none tabular-nums tracking-tight " + tone}>
+        {value}
+      </p>
     </div>
   );
 }
