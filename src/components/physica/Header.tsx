@@ -11,14 +11,15 @@ import {
   Maximize2,
   Box,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
-const navItems = [
-  { label: "Home", icon: Home, active: true },
-  { label: "Explore Concepts", icon: Compass },
-  { label: "My Learning", icon: GraduationCap },
-  { label: "Classroom", icon: Presentation },
-  { label: "Resources", icon: FileText },
-];
+export const navItems = [
+  { label: "Home", icon: Home, to: "/" },
+  { label: "Explore Concepts", icon: Compass, to: "/explore" },
+  { label: "My Learning", icon: GraduationCap, to: "/my-learning" },
+  { label: "Classroom", icon: Presentation, to: "/classroom" },
+  { label: "Resources", icon: FileText, to: "/resources" },
+] as const;
 
 export function Header() {
   return (
@@ -37,23 +38,17 @@ export function Header() {
         </div>
 
         <nav className="mx-auto hidden items-center gap-1 lg:flex">
-          {navItems.map(({ label, icon: Icon, active }) => (
-            <a
+          {navItems.map(({ label, icon: Icon, to }) => (
+            <Link
               key={label}
-              href="#"
-              className={
-                "relative flex items-center gap-2 rounded-lg px-3 py-4 text-sm transition-colors " +
-                (active
-                  ? "font-semibold text-primary"
-                  : "text-foreground/70 hover:text-foreground")
-              }
+              to={to}
+              activeOptions={{ exact: true }}
+              className="group relative flex items-center gap-2 rounded-lg px-3 py-4 text-sm text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring data-[status=active]:font-semibold data-[status=active]:text-primary"
             >
               <Icon className="h-4 w-4" />
               <span className="whitespace-nowrap">{label}</span>
-              {active && (
-                <span className="absolute inset-x-1 -bottom-3 h-0.5 rounded-full bg-primary" />
-              )}
-            </a>
+              <span className="absolute inset-x-1 -bottom-3 hidden h-0.5 rounded-full bg-primary group-data-[status=active]:block" />
+            </Link>
           ))}
         </nav>
 
